@@ -1,3 +1,4 @@
+import itertools
 from typing import Generator
 
 from selenium.common.exceptions import NoSuchElementException
@@ -20,6 +21,7 @@ def _goto_next_page(ghost: Ghost) -> bool:
 
 
 def _find_next_page_button(ghost, page_xpath: str= NEXT_PAGE_XPATH_2):
+    assert ghost.driver is not None
     try:
         button = ghost.driver.find_element_by_xpath(page_xpath)
         if button.text != 'Página siguiente':
@@ -44,8 +46,7 @@ def get_bnp_pariba_pages(ghost: Ghost) -> Generator[str, None, None]:
     with ghost as driver:
         driver.get(PARIBAS_URL)
 
-        page_num = 1
-        while True:
+        for page_num in itertools.count(start=1, step=1):
             _wait_for_table_loaded(ghost)
 
             yield driver.page_source
@@ -55,4 +56,3 @@ def get_bnp_pariba_pages(ghost: Ghost) -> Generator[str, None, None]:
                 break
 
             print(f'Loading page {page_num}')
-            page_num += 1

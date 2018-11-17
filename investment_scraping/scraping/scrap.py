@@ -51,6 +51,6 @@ def _get_row_text(row_html):
     return [x.strip() for x in all_text]
 
 
-def get_data(html: str) -> List[FundsTableRow]:
+def get_rows_data(html: str) -> List[FundsTableRow]:
     rows_html = _get_rows_html(html)
     return _get_rows(rows_html)

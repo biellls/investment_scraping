@@ -1,7 +1,7 @@
 import os
 
 from investment_scraping import PROJECT_DIR
-from investment_scraping.scraping.scrap import get_data
+from investment_scraping.scraping.scrap import get_rows_data
 
 
 def read_file(filename):
@@ -16,5 +16,5 @@ def read_file(filename):
 
 def test_get_table():
     html = read_file('page1.html')
-    data = list(get_data(html))
+    data = list(get_rows_data(html))
     assert data == -1
