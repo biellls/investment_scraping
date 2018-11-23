@@ -21,7 +21,7 @@ def _get_row_links(row_html):
     )
 
 
-def _make_row(row_html):
+def _make_row(row_html: str) -> FundsTableRow:
     data = _get_row_text(row_html)
     links = _get_row_links(row_html)
     row = FundsTableRow(

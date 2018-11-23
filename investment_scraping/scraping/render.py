@@ -37,6 +37,7 @@ def _find_next_page_button(ghost, page_xpath: str= NEXT_PAGE_XPATH_2):
 
 
 def _wait_for_table_loaded(ghost: Ghost):
+    assert ghost.driver is not None
     WebDriverWait(ghost.driver, WAIT_DELAY).until(
         expected_conditions.presence_of_element_located((By.XPATH, TABLE_XPATH)))
     print('Table is ready')

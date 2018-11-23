@@ -12,7 +12,7 @@ from investment_scraping.scraping.scrap import get_rows_data
 CHROME_PATH = "/opt/homebrew-cask/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome"
 CHROMEDRIVER_PATH = os.path.join(PROJECT_DIR, 'resources', 'chromedriver')
 
-BATCH_SIZE_PAGES = 2
+BATCH_SIZE_PAGES = 10
 
 if __name__ == '__main__':
     ghost = ChromeGhost(CHROME_PATH, CHROMEDRIVER_PATH)
